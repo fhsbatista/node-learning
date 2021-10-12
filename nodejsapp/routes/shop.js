@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
     console.log(adminData.products);
     // "__dirname" => the path of this file (shop.js) on the operation system
     // "../" is for going one folder back so that we can find the "views" folder
-    res.render('shop');
+    res.render('shop', { products: adminData.products, title: 'Shop' });
 });
 
 module.exports = router;

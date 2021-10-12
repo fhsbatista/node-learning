@@ -4,7 +4,7 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title My Shop
+        title #{title}
         link(rel="stylesheet", href="css/main.css")
         link(rel="stylesheet", href="css/product.css")
     body 
@@ -14,4 +14,20 @@ html(lang="en")
                     li.main-header__item
                         a.active(href="/") Shop
                     li.main-header__item
-                        a.active(href="/admin/add-product") Add Product
+                        a(href="/admin/add-product") Add Product
+        main
+            if products.length > 0
+                .grid
+                    each product in products
+                        article.card.product-item
+                            header.card__header
+                                h1.product__title #{product.title}
+                            .card__image 
+                                img(src="https://images-na.ssl-images-amazon.com/images/I/41J6Qjnn60L._SX311_BO1,204,203,200_.jpg", alt="A random book")
+                            .card__content 
+                                h2.product__price R$20,00
+                                p.product__description A very interesting book about so many things 
+                            .card__actions
+                                button.btn Add to Cart
+            else 
+                h1 No products for now
