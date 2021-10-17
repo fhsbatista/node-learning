@@ -6,10 +6,8 @@ const router = express.Router();
 const adminData = require('./admin');
 
 router.get('/', (req, res, next) => {
-    console.log(adminData.products);
-    // "__dirname" => the path of this file (shop.js) on the operation system
-    // "../" is for going one folder back so that we can find the "views" folder
-    res.render('shop', { products: adminData.products, pageTitle: 'Shop', path:'/'});
+    const products = adminData.products;
+    res.render('shop', { products: products, pageTitle: 'Shop', path:'/', hasProducts: products.length > 0});
 });
 
 module.exports = router;
